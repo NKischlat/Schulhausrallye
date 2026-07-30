@@ -188,6 +188,7 @@
     .target-line span:first-child { font-size: 1.25rem; }
     .start-form { display: grid; grid-template-columns: 1fr auto; gap: 10px; max-width: 650px; }
     .start-form label { grid-column: 1 / -1; font-size: .88rem; font-weight: 800; color: #dce8ee; }
+    .start-route-note { grid-column: 1 / -1; margin: 2px 2px 0; color: #cfe1e8; font-size: .8rem; line-height: 1.5; }
     .start-form input {
       width: 100%;
       min-height: 56px;
@@ -819,6 +820,47 @@
     .score-orbit span { display: block; margin-top: 7px; font-size: .78rem; font-weight: 900; text-transform: uppercase; letter-spacing: .06em; }
     .award { margin: 0; font-size: 1.7rem; }
     .award-copy { max-width: 600px; margin: 12px auto 26px; color: var(--muted); line-height: 1.6; }
+    .finish-message {
+      max-width: 720px;
+      margin: 0 auto 30px;
+      padding: 24px;
+      border: 2px solid #bfe7de;
+      border-radius: 24px;
+      background: linear-gradient(135deg, #effbf8, #fff8e8);
+      text-align: left;
+    }
+    .finish-kicker {
+      margin: 0 0 5px;
+      color: var(--teal-dark);
+      font-size: .78rem;
+      font-weight: 900;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+    .finish-message h3 { margin: 0; color: var(--navy); font-size: 1.45rem; }
+    .finish-message > p:not(.finish-kicker):not(.finish-callout) { margin: 10px 0 20px; color: var(--muted); line-height: 1.6; }
+    .finish-values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .finish-value {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 12px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, .86);
+      color: var(--navy);
+    }
+    .finish-value span { font-size: 1.35rem; }
+    .finish-value strong { font-size: .84rem; line-height: 1.25; }
+    .finish-callout {
+      margin: 18px 0 0;
+      padding: 13px 16px;
+      border-radius: 15px;
+      background: var(--navy);
+      color: white;
+      font-weight: 800;
+      line-height: 1.45;
+      text-align: center;
+    }
     .result-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 28px 0; }
     .result-item { padding: 18px 12px; border-radius: 18px; background: #f3f8f9; }
     .result-item strong { display: block; color: var(--teal-dark); font-size: 1.35rem; }
@@ -855,7 +897,8 @@
 
     @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; }
-      .hero-side { display: none; }
+      .hero-side { padding: 28px; border-top: 1px solid rgba(255,255,255,.12); }
+      .mission-card { width: min(100%, 650px); transform: none; }
       .game-layout { grid-template-columns: 1fr; }
       .route-panel { position: static; overflow: hidden; padding: 14px; }
       .route-panel h2, .route-panel > p, .safety-note { display: none; }
@@ -866,18 +909,32 @@
       .route-number { width: 34px; height: 34px; }
     }
     @media (max-width: 640px) {
+      html, body { overflow-x: hidden; }
       .shell { width: min(100% - 18px, 1180px); }
-      .topbar-inner { min-height: 62px; }
+      .topbar-inner { min-height: 56px; }
       .brand-mark { width: 38px; height: 38px; border-radius: 12px; }
       .brand-text span { display: none; }
       .stat-pill.team-pill { display: none; }
-      main { padding: 16px 0 42px; }
-      .hero { min-height: calc(100vh - 94px); border-radius: 27px; }
-      .hero-copy { padding: 31px 22px; justify-content: flex-start; }
-      .hero h1 { margin-top: 16px; font-size: clamp(2.8rem, 15vw, 4.5rem); }
-      .start-form { grid-template-columns: 1fr; }
+      main { padding: 10px 0 30px; }
+      .hero { min-height: 0; border-radius: 22px; }
+      .hero-copy { padding: 24px 18px 26px; justify-content: flex-start; }
+      .eyebrow { max-width: 100%; margin-bottom: 10px; padding: 6px 10px; font-size: .7rem; white-space: normal; }
+      .hero h1 { margin-top: 4px; font-size: clamp(2.15rem, 12vw, 3.25rem); line-height: 1; letter-spacing: -.045em; }
+      .hero-lead { margin: 16px 0 18px; font-size: .94rem; line-height: 1.5; }
+      .target-line { align-items: flex-start; margin-bottom: 18px; padding: 11px 13px; font-size: .86rem; }
+      .start-form { grid-template-columns: 1fr; gap: 8px; }
+      .start-form input { min-height: 50px; padding: 0 14px; }
       .start-form button { width: 100%; }
-      .target-line { align-items: flex-start; }
+      .start-route-note { font-size: .75rem; }
+      .resume-card { margin-top: 12px; padding: 13px; }
+      .resume-actions { display: grid; grid-template-columns: 1fr; }
+      .resume-actions button { width: 100%; }
+      .hero-side { padding: 18px; }
+      .mission-card { padding: 18px; border-radius: 20px; }
+      .mission-compass { width: 70px; height: 70px; margin-bottom: 14px; font-size: 2.4rem; }
+      .mission-card h2 { margin-bottom: 12px; font-size: 1.15rem; }
+      .mission-list { gap: 9px; }
+      .mission-list li { font-size: .88rem; }
       .route-panel { border-radius: 19px; }
       .station-hero { min-height: 210px; grid-template-columns: 1fr; border-radius: 24px; }
       .station-symbol { position: absolute; right: 20px; top: 18px; opacity: .32; }
@@ -894,6 +951,9 @@
       .station-actions, .action-group { display: grid; grid-template-columns: 1fr; width: 100%; }
       .station-actions button { width: 100%; }
       .result-grid { grid-template-columns: 1fr; }
+      .finish-message { padding: 19px; text-align: center; }
+      .finish-values { grid-template-columns: 1fr; }
+      .finish-value { justify-content: center; }
       .final-card { border-radius: 26px; }
     }
     @media (prefers-reduced-motion: reduce) {
@@ -930,13 +990,14 @@
       <div class="hero">
         <div class="hero-copy">
           <div class="eyebrow"><span aria-hidden="true">●</span> Entdecken · Kombinieren · Punkten</div>
-          <h1>Die Schulhaus<em>rallye</em></h1>
+          <h1>Die Schulhaus<wbr><em>rallye</em></h1>
           <p class="hero-lead">Findet die Orte, lest genau und löst die fünf Missionen gemeinsam. Euer Schulhaus steckt voller Hinweise.</p>
             <div class="target-line"><span aria-hidden="true">🎓</span><span>Für Schülerinnen und Schüler der B7.</span></div>
           <form class="start-form" id="startForm">
             <label for="teamName">Wie heißt euer Team?</label>
             <input id="teamName" name="teamName" maxlength="40" autocomplete="off" placeholder="Zum Beispiel: Die Spürnasen" required>
             <button class="primary-button" id="startButton" type="submit" disabled>Rallye starten →</button>
+            <p class="start-route-note">Die Startstation wird über den Teamnamen verteilt. Mit „Team 1“ bis „Team 5“ beginnt jedes Team sicher an einer anderen Station.</p>
           </form>
           <div class="resume-card hidden" id="resumeCard">
             <p>Es gibt einen gespeicherten Stand für <strong id="resumeTeam"></strong>.</p>
@@ -984,6 +1045,17 @@
           <div class="score-orbit"><div><strong id="finalScore">0/37</strong><span>Punkte</span></div></div>
           <h2 class="award" id="awardTitle">Schulhaus-Entdecker</h2>
           <p class="award-copy" id="awardCopy"></p>
+          <div class="finish-message">
+            <p class="finish-kicker">Eure gemeinsame Leistung</p>
+            <h3 id="finishHeadline">Stark gemacht, Team!</h3>
+            <p>Ihr habt gesucht, beobachtet, kombiniert, nachgefragt und euch gegenseitig unterstützt. Darauf könnt ihr stolz sein.</p>
+            <div class="finish-values" aria-label="Was ihr geschafft habt">
+              <div class="finish-value"><span aria-hidden="true">🤝</span><strong>Als Team zusammengehalten</strong></div>
+              <div class="finish-value"><span aria-hidden="true">🔎</span><strong>Mit offenen Augen entdeckt</strong></div>
+              <div class="finish-value"><span aria-hidden="true">💡</span><strong>Gemeinsam Lösungen gefunden</strong></div>
+            </div>
+            <p class="finish-callout">👏 Gebt euch einen Team-Applaus – ihr habt es geschafft!</p>
+          </div>
           <div class="result-grid">
             <div class="result-item"><strong>5</strong><span>Stationen erkundet</span></div>
             <div class="result-item"><strong id="finalPercent">0 %</strong><span>Trefferquote</span></div>
@@ -1033,9 +1105,12 @@
           { id: "a2", prompt: "Welche Zimmernummer hat das Sekretariat?", fields: [
             { id: "a2_room", label: "Zimmernummer", placeholder: "Antwortmöglichkeit: B208", answers: ["A124", "A 124", "124", "a 124", "a124"] }
           ]},
-          { id: "a3", prompt: "Von wann bis wann hat das Sekretariat mittwochs geöffnet?", note: "Tragt beide Öffnungszeiträume ein.", columns: 2, fields: [
-            { id: "a3_time1", label: "Vormittags", placeholder: "00:00 - 00:00", answers: ["07:30 - 12:00", "7:30 - 12:00", "07.30 - 12.00", "7.30 - 12.00"] },
-            { id: "a3_time2", label: "Nachmittags", placeholder: "00:00 - 00:00", answers: ["12:30 - 14:00", "12.30 - 14.00", "12:30 - 14", "12.30 - 14"] }
+          { id: "a3", prompt: "Welche Öffnungszeiten des Sekretariats sind richtig? Wählt die richtige Antwort aus.", choices: [
+            { value: "correct-hours", label: "Montag und Mittwoch: 7.30–12.30 Uhr und 13.00–14.00 Uhr; Dienstag und Donnerstag: 7.30–12.30 Uhr; Freitag: 7.30–12.00 Uhr." },
+            { value: "same-hours", label: "Montag bis Donnerstag: 7.30–14.00 Uhr; Freitag: 7.30–12.00 Uhr." },
+            { value: "later-hours", label: "Montag und Mittwoch: 8.00–12.00 Uhr und 13.00–15.00 Uhr; Dienstag, Donnerstag und Freitag: 8.00–12.00 Uhr." }
+          ], fields: [
+            { id: "a3_hours", label: "Öffnungszeiten", answers: ["correct-hours"], points: 2 }
           ]},
           { id: "a4", prompt: "Warum heißt das Sekretariat auch \"Pink-Office\"? Wähle die richtige Antwort aus.", choices: [
             { value: "sweets", label: "Weil es dort immer Süßigkeiten gibt." },
@@ -1162,7 +1237,7 @@
             { id: "d3_name", label: "Name", placeholder: "G... B...", answers: ["Green Boxx", "Green Box"] }
           ]},
           { id: "d4", prompt: "Wie viel kostet dort ein Kaffee?", fields: [
-            { id: "d4_price", label: "Preis in Euro", placeholder: "0,00 €", answers: ["1,20", "1.20", "1,20 €", "1.20 €", "1,2", "1.2"] }
+            { id: "d4_price", label: "Preis in Euro", placeholder: "0,00 €", answers: ["1,50", "1.50", "1,50 €", "1.50 €", "1,5", "1.5"] }
           ]},
           { id: "d5", prompt: "Was steht auf den Treppenstufen vom Erdgeschoss zum 1. Stock?", note: "Treppen: Dein ... - ... - ...", columns: 3, fields: [
             { id: "d5_word1", label: "Wort 1", placeholder: "Erstes Wort", answers: ["Gratis"] },
@@ -1197,7 +1272,7 @@
           { id: "e5", prompt: "Foto-Kreativchallenge: Findet die Tischtennisplatte und legt dort mit ungefährlichen Gegenständen, die ihr dabeihabt, das Wort FAIR. Fotografiert anschließend euer Team-Kunstwerk.", note: "Verwendet nur eigene Gegenstände, räumt danach alles wieder auf und achtet darauf, niemanden zu stören. Personen müssen nicht fotografiert werden.", photoTask: true, fields: [
             { id: "e5_art_photo", label: "Foto eures FAIR-Kunstwerks", photoPrompt: "Fotografiert das Wort FAIR auf der Tischtennisplatte.", missingFeedback: "Bitte ladet ein Foto eures FAIR-Kunstwerks hoch.", photo: true, open: true, points: 0 }
           ]},
-          { id: "e6", prompt: "Rätsel: Ich habe keine Stimme und sage trotzdem: Gemeinsam geht es besser. Zwei kommen von verschiedenen Seiten und treffen sich in meiner Mitte. Ich warte dort, wo Pausen unter freiem Himmel stattfinden. Welches Zeichen bin ich? Findet mich und fotografiert mich möglichst frontal.", special: "photoReference", photoTask: true, fields: [
+          { id: "e6", prompt: "Rätsel: Ich stehe für einen fairen Umgang, gegenseitiges Verständnis und ein gutes Miteinander. Ich hänge draußen und sehe aus wie ein Straßenschild. Ihr findet mich in der Nähe des Kräutergartens und des Sammelplatzes für den Brandfall. Welches Symbol bin ich? Findet mich und fotografiert mich möglichst frontal.", special: "photoReference", photoTask: true, fields: [
             { id: "e6_photo", label: "Foto des gefundenen Zeichens", photoPrompt: "Fotografiert das gesuchte Zeichen möglichst frontal und gut sichtbar.", missingFeedback: "Das Foto passt noch nicht eindeutig zum gesuchten Zeichen. Versucht es erneut und fotografiert es möglichst frontal.", compareImage: "sign", photo: true, open: true, points: 0 }
           ]},
           { id: "e7", prompt: "Was könnte das Zeichen bedeuten?", note: "Hier gibt es kein Richtig oder Falsch. Haltet eure gemeinsame Idee fest.", fields: [
@@ -1208,12 +1283,14 @@
     ];
 
     const STORAGE_KEY = "mission-b7-schulhausrallye-v1";
-    const allPointFields = stations.flatMap(station => station.tasks.flatMap(task => task.fields.filter(field => field.points !== 0)));
-    const MAX_POINTS = allPointFields.length;
+    const pointValue = field => field.points === 0 ? 0 : (Number(field.points) > 0 ? Number(field.points) : 1);
+    const allPointFields = stations.flatMap(station => station.tasks.flatMap(task => task.fields.filter(field => pointValue(field) > 0)));
+    const MAX_POINTS = allPointFields.reduce((sum, field) => sum + pointValue(field), 0);
 
     const emptyState = () => ({
       teamName: "",
       current: 0,
+      startStation: 0,
       answers: {},
       results: {},
       photoMatches: {},
@@ -1252,6 +1329,27 @@
     function compact(value) { return normalize(value).replace(/\s/g, ""); }
     function hasValue(value) { return String(value ?? "").trim().length > 0; }
 
+    function assignedStartStation(teamName) {
+      const teamNumber = String(teamName).match(/\d+/);
+      if (teamNumber) return (Math.max(1, Number(teamNumber[0])) - 1) % stations.length;
+      const value = normalize(teamName) || "team";
+      let hash = 2166136261;
+      for (let index = 0; index < value.length; index += 1) {
+        hash ^= value.charCodeAt(index);
+        hash = Math.imul(hash, 16777619);
+      }
+      return (hash >>> 0) % stations.length;
+    }
+
+    function stationRoute() {
+      const start = Number.isInteger(state.startStation) && state.startStation >= 0 && state.startStation < stations.length ? state.startStation : 0;
+      return Array.from({ length: stations.length }, (_, offset) => (start + offset) % stations.length);
+    }
+
+    function currentRoutePosition() {
+      return stationRoute().indexOf(state.current);
+    }
+
     function matches(value, answers = []) {
       const normal = normalize(value);
       const packed = compact(value);
@@ -1275,8 +1373,8 @@
         checks = groups.map((group, index) => Boolean(group) && groups.indexOf(group) === index);
       } else if (task.special === "redNameTags") {
         const groups = values.map(value => {
-          if (matches(value, ["Goll", "Frau Goll", "Katharina Goll"])) return "goll";
-          if (matches(value, ["Hennig", "Herr Hennig", "Bastian Hennig"])) return "hennig";
+          if (matches(value, ["Goll", "Frau Goll", "Fr. Goll", "Fr Goll", "Katharina Goll"])) return "goll";
+          if (matches(value, ["Hennig", "Herr Hennig", "Hr. Hennig", "Hr Hennig", "Bastian Hennig"])) return "hennig";
           return "";
         });
         checks = groups.map((group, index) => Boolean(group) && groups.indexOf(group) === index);
@@ -1324,8 +1422,8 @@
 
     function currentScore() {
       return Object.entries(state.results).reduce((sum, [fieldId, correct]) => {
-        const isPointField = allPointFields.some(field => field.id === fieldId);
-        return sum + (isPointField && correct ? 1 : 0);
+        const pointField = allPointFields.find(field => field.id === fieldId);
+        return sum + (pointField && correct ? pointValue(pointField) : 0);
       }, 0);
     }
 
@@ -1350,11 +1448,14 @@
     function startNewGame(teamName) {
       state = emptyState();
       state.teamName = teamName.trim();
+      state.startStation = assignedStartStation(state.teamName);
+      state.current = state.startStation;
       state.startedAt = Date.now();
       saveState();
       showScreen("game");
       renderGame();
-      showToast("Team " + state.teamName + " ist startklar!");
+      const start = stations[state.startStation];
+      showToast(`Team ${state.teamName} startet bei Station ${state.startStation + 1}: ${start.title}!`);
     }
 
     function resumeGame() {
@@ -1367,14 +1468,18 @@
     }
 
     function renderRoute() {
-      routeList.innerHTML = stations.map((station, index) => {
+      const route = stationRoute();
+      const firstIncomplete = route.findIndex(index => !state.completed.includes(stations[index].id));
+      const unlockedThrough = firstIncomplete === -1 ? route.length - 1 : firstIncomplete;
+      routeList.innerHTML = route.map((stationIndex, routeIndex) => {
+        const station = stations[stationIndex];
         const done = state.completed.includes(station.id);
-        const active = index === state.current;
-        const unlocked = index <= state.current || done;
+        const active = stationIndex === state.current;
+        const unlocked = routeIndex <= unlockedThrough || done;
         return `
-          <button class="route-step ${done ? "done" : ""} ${active ? "active" : ""}" type="button" data-route="${index}" ${unlocked ? "" : "disabled"} aria-current="${active ? "step" : "false"}">
-            <span class="route-number">${done ? "✓" : index + 1}</span>
-            <span class="route-label"><strong>${station.id} · ${station.short}</strong><span>${done ? "geprüft" : active ? "aktuell" : "gesperrt"}</span></span>
+          <button class="route-step ${done ? "done" : ""} ${active ? "active" : ""}" type="button" data-route="${stationIndex}" ${unlocked ? "" : "disabled"} aria-current="${active ? "step" : "false"}">
+            <span class="route-number">${done ? "✓" : stationIndex + 1}</span>
+            <span class="route-label"><strong>${station.id} · ${station.short}</strong><span>${done ? "geprüft" : active ? "aktuell" : unlocked ? "bereit" : "gesperrt"}</span></span>
             <span class="route-check">${done ? "+" : ""}</span>
           </button>`;
       }).join("");
@@ -1413,7 +1518,7 @@
       const taskResult = task.fields.some(field => Object.prototype.hasOwnProperty.call(state.results, field.id));
       const evaluation = taskResult ? evaluateTask(task) : null;
       const taskClass = evaluation ? (evaluation.correct ? "is-correct" : "has-error") : "";
-      const points = task.fields.filter(field => field.points !== 0).length;
+      const points = task.fields.reduce((sum, field) => sum + pointValue(field), 0);
       const fields = task.fields.filter(field => !field.photo).map((field, index) => {
         const tag = field.textarea ? "textarea" : "input";
         const resultKnown = Object.prototype.hasOwnProperty.call(state.results, field.id);
@@ -1888,8 +1993,10 @@
     function renderStation() {
       const station = stations[state.current];
       const completed = state.completed.includes(station.id);
-      const resultCount = station.tasks.flatMap(task => task.fields.filter(field => field.points !== 0 && state.results[field.id])).length;
-      const possible = station.tasks.flatMap(task => task.fields.filter(field => field.points !== 0)).length;
+      const routePosition = currentRoutePosition();
+      const stationFields = station.tasks.flatMap(task => task.fields);
+      const resultCount = stationFields.reduce((sum, field) => sum + (state.results[field.id] ? pointValue(field) : 0), 0);
+      const possible = stationFields.reduce((sum, field) => sum + pointValue(field), 0);
 
       stationPanel.innerHTML = `
         <header class="station-hero" style="--station-color:${station.color}">
@@ -1906,11 +2013,11 @@
             ${completed ? (resultCount === possible ? `Stark! Alle ${possible} Punkte dieser Station sind sicher.` : `${resultCount} von ${possible} Punkten. Ihr könnt nachbessern oder weitergehen.`) : "Tragt alle Antworten ein und prüft anschließend die Station."}
           </p>
           <div class="action-group">
-            <button class="ghost-button" id="backButton" type="button" ${state.current === 0 ? "disabled" : ""}>← Zurück</button>
+            <button class="ghost-button" id="backButton" type="button" ${routePosition <= 0 ? "disabled" : ""}>← Zurück</button>
             <button class="secondary-button check-button" id="checkButton" type="button">${completed ? "Erneut prüfen" : "Station prüfen"}</button>
           </div>
           <div class="action-group">
-            <button class="primary-button next-button ${completed ? "" : "hidden"}" id="nextButton" type="button">${state.current === stations.length - 1 ? "Ergebnis ansehen →" : "Nächste Station →"}</button>
+            <button class="primary-button next-button ${completed ? "" : "hidden"}" id="nextButton" type="button">${routePosition === stations.length - 1 ? "Ergebnis ansehen →" : "Nächste Station →"}</button>
           </div>
         </div>`;
 
@@ -1928,8 +2035,10 @@
       setupPhotoTasks();
 
       document.getElementById("backButton").addEventListener("click", () => {
-        if (state.current > 0) {
-          state.current -= 1;
+        const route = stationRoute();
+        const position = route.indexOf(state.current);
+        if (position > 0) {
+          state.current = route[position - 1];
           saveState();
           renderGame();
           window.scrollTo({ top: 0, behavior: "smooth" });
@@ -1952,9 +2061,10 @@
         task.fields.forEach((field, index) => {
           if (!hasValue(evaluation.values[index]) && !firstMissing) firstMissing = field.id;
           state.results[field.id] = evaluation.checks[index];
-          if (field.points !== 0) {
-            possiblePoints += 1;
-            if (evaluation.checks[index]) correctPoints += 1;
+          const fieldPoints = pointValue(field);
+          if (fieldPoints > 0) {
+            possiblePoints += fieldPoints;
+            if (evaluation.checks[index]) correctPoints += fieldPoints;
           }
         });
       });
@@ -1986,17 +2096,23 @@
     function goNext() {
       const station = stations[state.current];
       if (!state.completed.includes(station.id)) return;
-      if (state.current < stations.length - 1) {
-        state.current += 1;
+      const route = stationRoute();
+      const position = route.indexOf(state.current);
+      if (position < route.length - 1) {
+        state.current = route[position + 1];
         saveState();
         renderGame();
         window.scrollTo({ top: 0, behavior: "smooth" });
-      } else {
+      } else if (stations.every(item => state.completed.includes(item.id))) {
         state.finished = true;
         state.finishedAt = Date.now();
         saveState();
         showFinal();
         celebrate(42);
+      } else {
+        state.current = route.find(index => !state.completed.includes(stations[index].id));
+        saveState();
+        renderGame();
       }
     }
 
@@ -2025,7 +2141,8 @@
         copy = "Gute Teamarbeit! Einige Geheimnisse warten noch auf euren nächsten Rundgang.";
       }
 
-      document.getElementById("finalTeamLine").textContent = "Team " + state.teamName + ", ihr habt die B7 erkundet.";
+      document.getElementById("finalTeamLine").textContent = "Team " + state.teamName + ", ihr habt alle fünf Stationen gemeistert!";
+      document.getElementById("finishHeadline").textContent = "Stark gemacht, Team " + state.teamName + "!";
       document.getElementById("finalScore").textContent = score + "/" + MAX_POINTS;
       document.getElementById("finalPercent").textContent = percent + " %";
       document.getElementById("finalDuration").textContent = minutes + " Min.";
@@ -2090,7 +2207,7 @@
     document.getElementById("printButton").addEventListener("click", () => window.print());
     document.getElementById("reviewButton").addEventListener("click", () => {
       state.finished = false;
-      state.current = 0;
+      state.current = state.startStation || 0;
       saveState();
       showScreen("game");
       renderGame();
